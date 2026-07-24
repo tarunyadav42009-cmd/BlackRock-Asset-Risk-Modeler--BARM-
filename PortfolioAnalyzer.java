@@ -4,7 +4,7 @@ import java.util.List;
 
 public class PortfolioAnalyzer {
     public static void main(String[] args) {
-       
+
         List<Double> spyReturns = Arrays.asList(0.005, -0.002, 0.001, 0.008, -0.004);
         List<Double> bndReturns = Arrays.asList(0.001, 0.000089, -0.001, 0.002, 0.001);
         List<Double> gldReturns = Arrays.asList(-0.003, 0.004, 0.0045, -0.001, 0.005);
@@ -17,17 +17,17 @@ public class PortfolioAnalyzer {
 
         // Calculating weighted daily return for the portfolio
         for (int i = 0; i < spyReturns.size(); i++) {
-            double dailyPtfReturn = (spyReturns.get(i) * wSpy) 
-                                  + (bndReturns.get(i) * wBnd) 
-                                  + (gldReturns.get(i) * wGld);
+            double dailyPtfReturn = (spyReturns.get(i) * wSpy)
+                    + (bndReturns.get(i) * wBnd)
+                    + (gldReturns.get(i) * wGld);
             portfolioReturns.add(dailyPtfReturn);
         }
 
-        //  Metrics
+        // Metrics
         double annualizedVol = RiskEngine.calculateVolatility(portfolioReturns);
-        
+
         // Mocking a 3-year annualized return of 8% for demonstration
-        double simulatedAnnReturn = 0.08; 
+        double simulatedAnnReturn = 0.08;
         double sharpeRatio = RiskEngine.calculateSharpe(simulatedAnnReturn, annualizedVol, rfRate);
 
         // Report
